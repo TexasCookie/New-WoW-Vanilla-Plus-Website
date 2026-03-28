@@ -1,0 +1,17 @@
+---
+import AuthForm from '../../components/AuthForm';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Register">
+  <section class="page-hero container narrow auth-layout">
+    <div>
+      <p class="eyebrow">Create account</p>
+      <h1>Registration portal</h1>
+      <p>
+        Use this flow now for local demos, then replace the demo auth service with your real account creation pipeline.
+      </p>
+    </div>
+    <AuthForm client:load mode="register" />
+  </section>
+</BaseLayout>

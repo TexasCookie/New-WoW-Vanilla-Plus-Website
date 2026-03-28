@@ -1,0 +1,61 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Features">
+  <section class="page-hero container narrow">
+    <p class="eyebrow">Project features</p>
+    <h1>Present the server like a living expansion.</h1>
+    <p>
+      This page is designed to hold feature highlights, class overviews, custom systems, challenge modes, and long-form
+      project messaging without feeling cramped.
+    </p>
+  </section>
+
+  <section class="container section-block card-grid three-up">
+    <article class="info-card">
+      <h2>Rebalanced classes</h2>
+      <p>Show spec identities, role shifts, and talent experiments with artwork, patch notes, and forum links.</p>
+    </article>
+    <article class="info-card">
+      <h2>Custom bosses and battlegrounds</h2>
+      <p>Feature new encounters, screenshots, trailers, and PvP rule changes in a format players can actually browse.</p>
+    </article>
+    <article class="info-card">
+      <h2>Community-driven roadmap</h2>
+      <p>Keep a visible path for future patches, player suggestions, and what is being tested next.</p>
+    </article>
+  </section>
+
+  <section class="container section-block split-section">
+    <div>
+      <SectionHeading eyebrow="Expandable structure" title="Suggested feature subpages" />
+      <div class="card-grid">
+        <article class="mini-feature-card">
+          <h3>Classes</h3>
+          <p>One page per class, plus balance notes and talent links.</p>
+        </article>
+        <article class="mini-feature-card">
+          <h3>PvP</h3>
+          <p>Ranked ladders, event weekends, battleground changes, and arena plans.</p>
+        </article>
+        <article class="mini-feature-card">
+          <h3>PvE</h3>
+          <p>Dungeons, raids, challenge encounters, loot, and attunements.</p>
+        </article>
+        <article class="mini-feature-card">
+          <h3>Quality of life</h3>
+          <p>Client improvements, UI recommendations, launcher patching, and support guides.</p>
+        </article>
+      </div>
+    </div>
+    <div class="content-panel">
+      <p class="eyebrow">Why this page matters</p>
+      <p>
+        Larger server sites win because they do not hide their depth. When your content is grouped clearly, the project feels bigger,
+        healthier, and easier to trust before a player even downloads the client.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import AuthForm from '../../components/AuthForm';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Recovery">
+  <section class="page-hero container narrow auth-layout">
+    <div>
+      <p class="eyebrow">Password recovery</p>
+      <h1>Recovery flow scaffold</h1>
+      <p>
+        Later you can connect this to your mail provider, token tables, cooldown rules, and audit logging.
+      </p>
+    </div>
+    <AuthForm client:load mode="recovery" />
+  </section>
+</BaseLayout>

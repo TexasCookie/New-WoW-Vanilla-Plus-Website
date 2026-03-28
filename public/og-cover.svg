@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0f0911"/>
+  <circle cx="960" cy="120" r="280" fill="#3d1832" opacity="0.9"/>
+  <circle cx="980" cy="140" r="200" fill="#7f2f3b" opacity="0.4"/>
+  <path d="M126 444L348 132L570 444" stroke="#f1c36f" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M220 444H476" stroke="#ff7a3d" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="348" cy="482" r="36" fill="#f1c36f"/>
+  <text x="640" y="286" fill="#fff4dd" font-size="72" font-family="Arial, sans-serif" font-weight="700">VanillaPlus Reborn</text>
+  <text x="640" y="356" fill="#f1c36f" font-size="34" font-family="Arial, sans-serif">Astro + React portal starter for a game server project</text>
+</svg>

@@ -1,0 +1,55 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import { siteConfig } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Download">
+  <section class="page-hero container narrow">
+    <p class="eyebrow">Download center</p>
+    <h1>Get players from landing to login with less friction.</h1>
+    <p>
+      Use this page for launcher mirrors, manual patch instructions, system requirements, antivirus notes, and setup guides.
+      Right now it ships with placeholder actions linked to your current project resources.
+    </p>
+  </section>
+
+  <section class="container section-block card-grid three-up">
+    <article class="info-card accent-card">
+      <h2>Launcher</h2>
+      <p>Primary path for most players. Replace with your final launcher URL or installer CDN.</p>
+      <a class="button button-primary" href={siteConfig.downloadUrl} target="_blank" rel="noreferrer">Get launcher</a>
+    </article>
+    <article class="info-card">
+      <h2>Manual patch</h2>
+      <p>Keep a fallback option for players who cannot use the launcher.</p>
+      <a class="text-link" href={siteConfig.downloadUrl} target="_blank" rel="noreferrer">Open current download source</a>
+    </article>
+    <article class="info-card">
+      <h2>Full client</h2>
+      <p>Add direct and torrent mirrors here, plus checksums and region mirrors.</p>
+      <a class="text-link" href={siteConfig.downloadUrl} target="_blank" rel="noreferrer">Configure download mirrors</a>
+    </article>
+  </section>
+
+  <section class="container section-block split-section">
+    <div>
+      <SectionHeading eyebrow="Install flow" title="Simple onboarding steps" />
+      <ol class="steps-list">
+        <li>Download the launcher or manual client package.</li>
+        <li>Install into a clean game folder and verify the correct patch version.</li>
+        <li>Register an account from the portal.</li>
+        <li>Join Discord for support, events, and patch alerts.</li>
+      </ol>
+    </div>
+    <div class="content-panel">
+      <p class="eyebrow">Integration notes</p>
+      <ul class="check-list">
+        <li>Add region-aware mirror selection</li>
+        <li>Show launcher hash and latest version</li>
+        <li>Expose maintenance or patch alerts at the top</li>
+        <li>Connect analytics to track download conversions</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

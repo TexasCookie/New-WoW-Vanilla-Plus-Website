@@ -1,0 +1,32 @@
+---
+import { navigation, siteConfig } from '../config/site';
+---
+
+<header class="site-header">
+  <div class="container nav-shell">
+    <a class="brand" href="/" aria-label={`${siteConfig.shortName} home`}>
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none">
+          <path d="M17 40.5L31.5 16L46 40.5" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M24 40.5H40" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path>
+          <circle cx="32" cy="43" r="5" fill="currentColor"></circle>
+        </svg>
+      </span>
+      <span>
+        <strong>{siteConfig.shortName}</strong>
+        <small>Astro 6</small>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      {navigation.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="nav-actions">
+      <a class="button button-ghost" href={siteConfig.discordUrl} target="_blank" rel="noreferrer">Discord</a>
+      <a class="button button-primary" href="/download">Play now</a>
+    </div>
+  </div>
+</header>

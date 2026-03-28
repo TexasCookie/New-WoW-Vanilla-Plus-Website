@@ -1,0 +1,54 @@
+---
+import { emailCookieName, sessionCookieName } from '../../lib/server/auth';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const session = Astro.cookies.get(sessionCookieName)?.value;
+const email = Astro.cookies.get(emailCookieName)?.value;
+const isAuthed = Boolean(session && email);
+---
+
+<BaseLayout title="Dashboard">
+  <section class="page-hero container narrow">
+    <p class="eyebrow">Account dashboard</p>
+    <h1>{isAuthed ? 'Signed in successfully.' : 'Demo dashboard preview'}</h1>
+    <p>
+      {isAuthed
+        ? `You are signed in as ${email}. This page is ready to grow into character management, purchase history, Discord linking, and more.`
+        : 'Sign in first to test the cookie-based demo flow. In production this page should read user state from your real auth session.'}
+    </p>
+    {!isAuthed && <a class="button button-primary" href="/account/login">Go to login</a>}
+  </section>
+
+  <section class="container section-block card-grid three-up">
+    <article class="info-card">
+      <h2>Account overview</h2>
+      <p>Email, verification state, account flags, linked services, and region preferences.</p>
+    </article>
+    <article class="info-card">
+      <h2>Donation history</h2>
+      <p>Store transactions and fulfillment states once your payment system is connected.</p>
+    </article>
+    <article class="info-card">
+      <h2>Character tools</h2>
+      <p>Future home for armory, transfers, name changes, or account services.</p>
+    </article>
+  </section>
+
+  <section class="container section-block split-section">
+    <div class="content-panel">
+      <p class="eyebrow">Suggested next integrations</p>
+      <ul class="check-list">
+        <li>Replace demo cookies with real sessions or JWT-backed auth</li>
+        <li>Persist users in PostgreSQL or your account database</li>
+        <li>Add Discord OAuth and supporter role sync</li>
+        <li>Expose purchase receipts and server account actions</li>
+      </ul>
+    </div>
+    <div class="content-panel">
+      <p class="eyebrow">Demo logout</p>
+      <form method="post" action="/api/auth/logout">
+        <button class="button button-secondary" type="submit">Clear demo session</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

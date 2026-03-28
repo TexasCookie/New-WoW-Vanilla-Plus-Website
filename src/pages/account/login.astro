@@ -1,0 +1,18 @@
+---
+import AuthForm from '../../components/AuthForm';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Login">
+  <section class="page-hero container narrow auth-layout">
+    <div>
+      <p class="eyebrow">Account access</p>
+      <h1>Login portal</h1>
+      <p>
+        The current implementation is intentionally lightweight. It sets cookies locally and demonstrates where your team
+        can connect a real user database, session provider, captcha, 2FA, and mail verification.
+      </p>
+    </div>
+    <AuthForm client:load mode="login" />
+  </section>
+</BaseLayout>

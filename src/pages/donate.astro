@@ -1,0 +1,55 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import DonatePackages from '../components/DonatePackages';
+import { donationPackages } from '../lib/server/donate';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const selectedPackage = Astro.url.searchParams.get('package');
+const success = Astro.url.searchParams.get('success');
+---
+
+<BaseLayout title="Donate">
+  <section class="page-hero container narrow">
+    <p class="eyebrow">Support the project</p>
+    <h1>Donation flow scaffold, ready to connect to your real checkout system.</h1>
+    <p>
+      This page demonstrates pricing cards, package selection, and a server route that can later call Stripe, PayPal,
+      Tebex, your internal store, or any custom donation backend.
+    </p>
+  </section>
+
+  {success && (
+    <section class="container success-banner">
+      <strong>Demo checkout complete.</strong>
+      <span>{selectedPackage ? `${selectedPackage} selected in demo mode.` : 'You can now wire this to your real provider.'}</span>
+    </section>
+  )}
+
+  <section class="container section-block">
+    <SectionHeading
+      eyebrow="Packages"
+      title="Pick a donation tier"
+      description="Use the starter data for layout only, then replace prices, benefits, and business logic with your real store setup."
+    />
+    <DonatePackages client:load packages={donationPackages} />
+  </section>
+
+  <section class="container section-block split-section">
+    <div class="content-panel">
+      <p class="eyebrow">Backend integration ideas</p>
+      <ul class="check-list">
+        <li>Create real checkout sessions from your payment provider</li>
+        <li>Store completed purchases in your account database</li>
+        <li>Unlock cosmetic perks or ranks after webhook confirmation</li>
+        <li>Show purchase history in the account dashboard</li>
+      </ul>
+    </div>
+    <div class="content-panel">
+      <p class="eyebrow">Safety note</p>
+      <p>
+        Keep donation entitlement logic on the server. The front-end should only request a session or display a receipt,
+        not decide which perks a player receives.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+import { externalLinks, siteConfig } from '../config/site';
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="eyebrow">VanillaPlus Reborn</p>
+      <h3>Astro 6 foundation for a bigger portal.</h3>
+      <p class="footer-copy">
+        This starter ships with pages, content collections, mock API routes, account flows, donation placeholders,
+        and a clean base for your team to connect a real backend.
+      </p>
+    </div>
+    <div>
+      <p class="footer-heading">Project</p>
+      <div class="footer-links">
+        <a href="/features">Features</a>
+        <a href="/news">News</a>
+        <a href="/donate">Donate</a>
+        <a href="/account/dashboard">Account</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-heading">External</p>
+      <div class="footer-links">
+        {externalLinks.map((item) => (
+          <a href={item.href} target="_blank" rel="noreferrer">{item.label}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {new Date().getFullYear()} {siteConfig.shortName}. Demo portal starter.</span>
+    <span>Astro 6 + React islands + server-ready routing</span>
+  </div>
+</footer>

@@ -1,0 +1,38 @@
+---
+const features = [
+  {
+    title: 'Astro 6 structure for public and private surfaces',
+    text: 'The main site stays lean while dashboard, auth, and donation pages remain ready for SSR and future account logic.',
+  },
+  {
+    title: 'React islands only where interactivity matters',
+    text: 'Login, register, donate, and status widgets hydrate on demand instead of turning the whole site into a heavy SPA.',
+  },
+  {
+    title: 'Content collections for news and patch notes',
+    text: 'Announcements move out of hard-coded arrays and into Astro’s content layer so the site scales cleanly.',
+  },
+  {
+    title: 'Server endpoints for auth and donations',
+    text: 'Demo flows are already mapped to API routes so your team can swap in real database and payment logic later.',
+  },
+  {
+    title: 'Clear onboarding for launchers and Discord',
+    text: 'Players get obvious entry points for downloads, account creation, support, and community activity.',
+  },
+  {
+    title: 'Prepared for future armory and rankings',
+    text: 'The structure is already friendly to character pages, ladders, guild tools, and account-linked services.',
+  },
+];
+---
+
+<div class="feature-grid">
+  {features.map((feature) => (
+    <article class="feature-card">
+      <div class="feature-icon" aria-hidden="true"></div>
+      <h3>{feature.title}</h3>
+      <p>{feature.text}</p>
+    </article>
+  ))}
+</div>
