@@ -2,13 +2,23 @@ import { defineConfig, envField } from 'astro/config';
 import node from '@astrojs/node';
 import react from '@astrojs/react';
 
-const publicSiteUrl = process.env.PUBLIC_SITE_URL || 'http://localhost:4321';
+const publicSiteUrl = 'https://vanillaplus.gg';   // ← поменяй на свой реальный домен
 
 export default defineConfig({
+  i18n: {
+    defaultLocale: 'ru',
+    locales: ['ru', 'en'],
+    routing: {
+      prefixDefaultLocale: true     // ← русский будет /ru/, английский /en/
+    }
+  },
+
   site: publicSiteUrl,
   output: 'server',
   adapter: node({ mode: 'standalone' }),
+
   integrations: [react()],
+
   env: {
     schema: {
       PUBLIC_SITE_URL: envField.string({ context: 'client', access: 'public', default: publicSiteUrl }),
@@ -22,6 +32,7 @@ export default defineConfig({
       DEMO_ALLOW_ANY_LOGIN: envField.boolean({ context: 'server', access: 'public', default: true })
     }
   },
+
   vite: {
     server: {
       host: true

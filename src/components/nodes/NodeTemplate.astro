@@ -1,0 +1,31 @@
+---
+// src/components/nodes/NodeTemplate.astro
+// Просто копируй этот файл и переименовывай, когда захочешь новую секцию
+// just copy this file and rename this if u want new plate
+interface Props {
+  title?: string;
+  children: any;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="node-section">
+  {title && <h2 class="node-title">{title}</h2>}
+  <div class="node-content">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .node-section {
+    padding: 5rem 0;
+    border-bottom: 1px solid rgba(255,215,0,0.1);
+  }
+  .node-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #ffd700;
+  }
+</style>

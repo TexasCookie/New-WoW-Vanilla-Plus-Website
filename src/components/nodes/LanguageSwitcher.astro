@@ -1,0 +1,37 @@
+---
+// src/components/nodes/LanguageSwitcher.astro
+// Русский: Переключатель языка RU/EN
+// English: Language switcher RU/EN
+
+const { currentLang = 'ru' } = Astro.props;
+---
+
+<div class="language-switcher">
+  <a href="/ru" class={currentLang === 'ru' ? 'active' : ''}>🇷🇺 RU</a>
+  <a href="/en" class={currentLang === 'en' ? 'active' : ''}>🇬🇧 EN</a>
+</div>
+
+<style>
+  .language-switcher {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+  }
+  .language-switcher a {
+    padding: 10px 20px;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #ffd700;
+    border: 3px solid #ffd700;
+    transition: all 0.3s;
+  }
+  .language-switcher a.active,
+  .language-switcher a:hover {
+    background: #ffd700;
+    color: #111;
+  }
+</style>

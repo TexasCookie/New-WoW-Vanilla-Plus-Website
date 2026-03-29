@@ -1,0 +1,69 @@
+---
+// src/components/nodes/ServerStatus.astro
+// Русский: Блок со статусом серверов
+// English: Server status block
+
+import { translations, type Lang } from '../content/translations';
+import { siteConfig } from '../content/config';
+
+const { currentLang = 'ru' } = Astro.props;
+const lang: Lang = currentLang as Lang;
+const t = translations[lang].status;
+const { serverStatus } = siteConfig;
+---
+
+<section class="node-section status-section">
+  <div class="container">
+    <h2 class="node-title">{t.title}</h2>
+    
+    <div class="status-grid">
+      {serverStatus.realms.map((realm: any) => (
+        <div class="status-card">
+          <div class="realm-name">{realm.name}</div>
+          <div class="realm-type">{realm.type}</div>
+          <div class="online-bar">
+            <div class="online-fill" style={`width: ${(realm.online / realm.max) * 100}%`}></div>
+          </div>
+          <div class="online-count">
+            {realm.online} / {realm.max} онлайн
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <p class="version">{t.version}: <strong>{serverStatus.version}</strong></p>
+  </div>
+</section>
+
+<style>
+  .status-section { background: #111; }
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .status-card {
+    background: rgba(255, 215, 0, 0.08);
+    border: 2px solid #ffd700;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+  }
+  .realm-name { font-size: 1.8rem; color: #ffd700; margin-bottom: 0.5rem; }
+  .realm-type { color: #00ff9d; margin-bottom: 1.5rem; }
+  .online-bar {
+    height: 12px;
+    background: #222;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .online-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff9d, #ffd700);
+  }
+  .online-count { font-size: 1.4rem; font-weight: 700; }
+  .version { text-align: center; margin-top: 3rem; font-size: 1.3rem; opacity: 0.8; }
+</style>

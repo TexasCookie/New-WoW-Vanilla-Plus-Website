@@ -1,0 +1,77 @@
+/* src/styles/wow-vanilla-plus.css */
+/* === GLOBAL === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+  --gold: #ffd700;
+  --green: #00ff9d;
+  --dark: #111111;
+  --darker: #0a0a0a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: #eee;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* === NODE SECTIONS === */
+.node-section {
+  padding: 5rem 0;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.12);
+}
+
+.node-title {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 3.5rem;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+/* === BUTTONS (уже использовались в Hero) === */
+.btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.3rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: #111;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 3px solid var(--gold);
+}
+
+.btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+}
+
+/* === UTILS === */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}

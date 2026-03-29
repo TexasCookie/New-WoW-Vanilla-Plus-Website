@@ -1,0 +1,58 @@
+---
+// src/components/nodes/FeaturesGrid.astro
+// Русский: Сетка кастомных фич
+// English: Custom features grid
+
+import { translations, type Lang } from '../content/translations';
+import { siteConfig } from '../content/config';
+
+const { currentLang = 'ru' } = Astro.props;
+const lang: Lang = currentLang as Lang;
+const t = translations[lang].features;
+const { features } = siteConfig;
+---
+
+<section class="node-section features-section">
+  <div class="container">
+    <h2 class="node-title">{t.title}</h2>
+    
+    <div class="features-grid">
+      {features.map((feature: any) => (
+        <div class="feature-card">
+          <div class="feature-icon" style={`color: ${feature.color}`}>{feature.icon}</div>
+          <h3>{feature.title}</h3>
+          <p>{feature.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .feature-card {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .feature-card:hover {
+    transform: translateY(-8px);
+  }
+  .feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .feature-card h3 {
+    color: #ffd700;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+</style>

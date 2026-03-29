@@ -1,0 +1,35 @@
+---
+// src/pages/ru/index.astro   (или /en/index.astro)
+// Русский: Главная страница проекта
+// English: Main page of the project
+
+import Hero from '../../components/nodes/Hero.astro';
+import ServerStatus from '../../components/nodes/ServerStatus.astro';
+import FeaturesGrid from '../../components/nodes/FeaturesGrid.astro';
+import NewsFeed from '../../components/nodes/NewsFeed.astro';
+import Roadmap from '../../components/nodes/Roadmap.astro';
+import DownloadCTA from '../../components/nodes/DownloadCTA.astro';
+import LanguageSwitcher from '../../components/nodes/LanguageSwitcher.astro';
+
+const currentLang = Astro.currentLocale || 'ru';
+---
+
+<!DOCTYPE html>
+<html lang={currentLang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WoW Vanilla Plus</title>
+  <link rel="stylesheet" href="/src/styles/wow-vanilla-plus.css" />
+</head>
+<body>
+  <LanguageSwitcher currentLang={currentLang} />
+
+  <Hero currentLang={currentLang} />
+  <ServerStatus currentLang={currentLang} />
+  <FeaturesGrid currentLang={currentLang} />
+  <NewsFeed currentLang={currentLang} />
+  <Roadmap currentLang={currentLang} />
+  <DownloadCTA currentLang={currentLang} />
+</body>
+</html>

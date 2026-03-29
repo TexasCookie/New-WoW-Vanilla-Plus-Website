@@ -1,0 +1,65 @@
+---
+// src/components/nodes/Roadmap.astro
+// Русский: Дорожная карта
+// English: Roadmap
+
+import { translations, type Lang } from '../content/translations';
+import { siteConfig } from '../content/config';
+
+const { currentLang = 'ru' } = Astro.props;
+const lang: Lang = currentLang as Lang;
+const t = translations[lang].roadmap;
+const { roadmap } = siteConfig;
+---
+
+<section class="node-section roadmap-section">
+  <div class="container">
+    <h2 class="node-title">{t.title}</h2>
+    
+    <div class="roadmap-grid">
+      {roadmap.map((item: any) => (
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-content">
+            <div class="roadmap-date">{item.title}</div>
+            <div class="roadmap-text">{item.text}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .roadmap-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .roadmap-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .roadmap-dot {
+    width: 24px;
+    height: 24px;
+    background: #ffd700;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 15px #ffd700;
+  }
+  .roadmap-content {
+    flex: 1;
+    background: #1a1a1a;
+    padding: 1.5rem 2rem;
+    border-radius: 9999px;
+    border: 2px solid #ffd700;
+  }
+  .roadmap-date {
+    color: #00ff9d;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+</style>

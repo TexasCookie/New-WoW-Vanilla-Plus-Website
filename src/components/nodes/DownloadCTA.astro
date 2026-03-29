@@ -1,0 +1,41 @@
+---
+// src/components/nodes/DownloadCTA.astro
+// Русский: Большая кнопка-призыв скачать клиент
+// English: Big download CTA button
+
+import { translations, type Lang } from '../content/translations';
+
+const { currentLang = 'ru' } = Astro.props;
+const lang: Lang = currentLang as Lang;
+const t = translations[lang].cta;
+---
+
+<section class="node-section cta-section">
+  <div class="container cta-inner">
+    <h2>{t.title}</h2>
+    <p class="cta-text">{t.text}</p>
+    <a href="/download" class="btn btn-primary big">{t.button}</a>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    background: linear-gradient(180deg, #111, #1a1a1a);
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+  .cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .cta-text {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+  }
+  .btn.big {
+    padding: 1.4rem 4rem;
+    font-size: 1.6rem;
+    font-weight: 900;
+  }
+</style>
