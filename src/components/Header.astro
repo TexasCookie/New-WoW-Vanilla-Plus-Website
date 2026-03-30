@@ -1,32 +1,72 @@
 ---
 import { navigation, siteConfig } from '../config/site';
+
+const locale = Astro.currentLocale || 'ru';
+const navItems = navigation[locale as keyof typeof navigation];
 ---
 
 <header class="site-header">
-  <div class="container nav-shell">
-    <a class="brand" href="/" aria-label={`${siteConfig.shortName} home`}>
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 64" fill="none">
-          <path d="M17 40.5L31.5 16L46 40.5" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M24 40.5H40" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path>
-          <circle cx="32" cy="43" r="5" fill="currentColor"></circle>
-        </svg>
-      </span>
-      <span>
-        <strong>{siteConfig.shortName}</strong>
-        <small>Astro 6</small>
-      </span>
+  <div class="header-container">
+    <!-- Логотип -->
+    <a href={`/${locale}`} class="logo" aria-label={`${siteConfig.shortName} home`}>
+      <strong>{siteConfig.shortName}</strong>
     </a>
 
-    <nav class="main-nav" aria-label="Main navigation">
-      {navigation.map((item) => (
-        <a href={item.href}>{item.label}</a>
-      ))}
+    <!-- Навигация -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        {navItems.map((item) => (
+          <li class={item.children ? 'nav-item dropdown' : 'nav-item'}>
+            {item.children ? (
+              <>
+                <button class="dropdown-toggle" type="button">
+                  {item.label} <span class="arrow">▼</span>
+                </button>
+                <ul class="dropdown-menu">
+                  {item.children.map((child) => (
+                    <li>
+                      <a href={child.href} class="dropdown-link">
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <a href={item.href} class="nav-link" { ...(item.external && { target: '_blank', rel: 'noreferrer' }) }>
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
     </nav>
 
-    <div class="nav-actions">
-      <a class="button button-ghost" href={siteConfig.discordUrl} target="_blank" rel="noreferrer">Discord</a>
-      <a class="button button-primary" href="/download">Play now</a>
+    <!-- Кнопки действий -->
+    <div class="header-actions">
+      <a href={siteConfig.discordUrl} target="_blank" rel="noreferrer" class="btn-discord">Discord</a>
+      <a href="/download" class="btn-play">Играть сейчас</a>
     </div>
   </div>
 </header>
+
+<style>
+  /* Тот же стиль, что я давал раньше — оставил без изменений */
+  .site-header { background: #111; border-bottom: 3px solid #b38b2d; padding: 0 1rem; position: sticky; top: 0; z-index: 1000; }
+  .header-container { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  .logo { color: #ffd700; font-size: 1.5rem; text-decoration: none; }
+  .nav-list { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+  .nav-item { position: relative; }
+  .nav-link, .dropdown-toggle { color: #ddd; text-decoration: none; font-weight: 500; padding: 0.5rem 1rem; display: flex; align-items: center; gap: 4px; transition: color 0.2s; }
+  .nav-link:hover, .dropdown-toggle:hover { color: #ffd700; }
+  .dropdown-menu { position: absolute; top: 100%; left: 0; background: #1f1f1f; border: 2px solid #b38b2d; border-radius: 6px; padding: 0.5rem 0; min-width: 200px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.25s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.5); list-style: none; }
+  .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown-link { display: block; padding: 0.75rem 1.25rem; color: #ddd; text-decoration: none; }
+  .dropdown-link:hover { background: #b38b2d; color: #111; }
+  .arrow { font-size: 0.8em; transition: transform 0.2s; }
+  .dropdown:hover .arrow { transform: rotate(180deg); }
+  .btn-play { background: #b38b2d; color: #111; padding: 0.5rem 1.5rem; border-radius: 9999px; font-weight: bold; text-decoration: none; }
+  .btn-play:hover { background: #ffd700; transform: scale(1.05); }
+  .btn-discord { color: #ddd; text-decoration: none; margin-right: 1rem; }
+  @media (max-width: 768px) { .nav-list { gap: 1rem; font-size: 0.95rem; } }
+</style>

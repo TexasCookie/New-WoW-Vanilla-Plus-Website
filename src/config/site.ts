@@ -24,19 +24,80 @@ export const siteConfig = {
   donateUrl: PUBLIC_DONATE_URL,
 };
 
-export const navigation = [
-  { href: '/', label: 'Home' },
-  { href: '/download', label: 'Download' },
-  { href: '/features', label: 'Features' },
-  { href: '/news', label: 'News' },
-  { href: '/donate', label: 'Donate' },
-  { href: '/discord', label: 'Discord' },
-  { href: '/account/login', label: 'Login' },
-];
+// Мультиязычная навигация с выпадающими меню
+export const navigation = {
+  ru: [
+    { href: '/', label: 'Главная' },
 
+    {
+      label: 'Игра',
+      children: [
+        { href: '/features', label: 'Особенности' },
+        { href: '/download', label: 'Скачать' },
+        { href: '/talents', label: 'Калькулятор талантов' },
+      ],
+    },
+
+    {
+      label: 'Сообщество',
+      children: [
+        { href: '/news', label: 'Новости' },
+        { href: siteConfig.wikiUrl, label: 'Wiki' },
+        { href: siteConfig.bugTrackerUrl, label: 'Баг-трекер' },
+        { href: siteConfig.talentCalculatorUrl, label: 'Таланты' },
+      ],
+    },
+
+    {
+      label: 'Сервер',
+      children: [
+        { href: '/status', label: 'Статус сервера' },
+        { href: '/rules', label: 'Правила' },
+      ],
+    },
+
+    { href: '/donate', label: 'Донат' },
+    { href: siteConfig.discordUrl, label: 'Discord', external: true },
+  ],
+
+  en: [
+    { href: '/', label: 'Home' },
+
+    {
+      label: 'Game',
+      children: [
+        { href: '/features', label: 'Features' },
+        { href: '/download', label: 'Download' },
+        { href: '/talents', label: 'Talent Calculator' },
+      ],
+    },
+
+    {
+      label: 'Community',
+      children: [
+        { href: '/news', label: 'News' },
+        { href: siteConfig.wikiUrl, label: 'Wiki' },
+        { href: siteConfig.bugTrackerUrl, label: 'Bug Tracker' },
+        { href: siteConfig.talentCalculatorUrl, label: 'Talents' },
+      ],
+    },
+
+    {
+      label: 'Server',
+      children: [
+        { href: '/status', label: 'Server Status' },
+        { href: '/rules', label: 'Rules' },
+      ],
+    },
+
+    { href: '/donate', label: 'Donate' },
+    { href: siteConfig.discordUrl, label: 'Discord', external: true },
+  ],
+};
+
+// Внешние ссылки (одинаковые для ru и en)
 export const externalLinks = [
-  { href: siteConfig.wikiUrl, label: 'Wiki' },
-  { href: siteConfig.talentCalculatorUrl, label: 'Talent Calculator' },
-  { href: siteConfig.bugTrackerUrl, label: 'Bug Tracker' },
-  { href: siteConfig.supportUrl, label: 'Support Project' },
+  { label: 'GitHub', href: 'https://github.com/TexasCookie/New-WoW-Vanilla-Plus-Website' },
+  { label: 'Discord', href: siteConfig.discordUrl },
+  { label: 'Wiki', href: siteConfig.wikiUrl },
 ];
