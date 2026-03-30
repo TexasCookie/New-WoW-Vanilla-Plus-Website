@@ -1,4 +1,4 @@
-# VanillaPlus Astro 6 Rewrite
+# VanillaPlus Astro 6 Rewrite(with AIs helping)
 
 A fresh **Astro 6 + React** starter for rebuilding the VanillaPlus project site into a bigger portal-style experience.
 
