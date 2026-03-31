@@ -1,0 +1,19 @@
+---
+interface Props {
+  text: string;
+  variant?: 'default' | 'success' | 'warning' | 'info';
+}
+
+const { text, variant = 'default' } = Astro.props;
+
+const variantClasses: Record<string, string> = {
+  default: 'bg-wow-surface text-wow-muted',
+  success: 'bg-[#8cbe4b]/10 text-[#8cbe4b]',
+  warning: 'bg-[#f89d41]/10 text-[#f89d41]',
+  info: 'bg-[#0070dd]/10 text-[#0070dd]',
+};
+---
+
+<span class:list={['inline-flex items-center px-2 py-0.5 text-xs uppercase tracking-wider rounded-sm font-medium', variantClasses[variant]]}>
+  {text}
+</span>

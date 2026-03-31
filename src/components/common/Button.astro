@@ -1,0 +1,118 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'gold' | 'green';
+  href?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const {
+  variant = 'gold',
+  href,
+  size = 'md',
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+
+const sizeClasses: Record<string, string> = {
+  sm: 'px-4 py-2 text-xs',
+  md: 'px-6 py-3 text-sm',
+  lg: 'px-8 py-4 text-base',
+};
+
+const variantStyles: Record<string, string> = {
+  primary:
+    'bg-wow-gold text-wow-bg hover:bg-wow-accent',
+  secondary:
+    'bg-wow-surface text-wow-text border border-wow-border hover:border-wow-accent hover:text-wow-accent',
+  gold:
+    'wow-btn-gold',
+  green:
+    'wow-btn-green',
+};
+---
+
+<Tag
+  href={href}
+  class:list={[
+    'wow-btn relative inline-flex items-center justify-center uppercase tracking-wider font-heading transition-all duration-200 hover:scale-[1.02] cursor-pointer',
+    sizeClasses[size],
+    variantStyles[variant],
+  ]}
+>
+  <span class="wow-btn-arrow-left" aria-hidden="true"></span>
+  <span class="relative z-10"><slot /></span>
+  <span class="wow-btn-arrow-right" aria-hidden="true"></span>
+</Tag>
+
+<style>
+  /* ---- Arrow pseudo-elements (CSS border triangles) ---- */
+  .wow-btn-arrow-left,
+  .wow-btn-arrow-right {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    transition: opacity 0.2s ease;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  .wow-btn-arrow-left {
+    border-width: 5px 8px 5px 0;
+    border-color: transparent #f1c22d transparent transparent;
+    margin-right: 0.5rem;
+  }
+
+  .wow-btn-arrow-right {
+    border-width: 5px 0 5px 8px;
+    border-color: transparent transparent transparent #f1c22d;
+    margin-left: 0.5rem;
+  }
+
+  .wow-btn:hover .wow-btn-arrow-left,
+  .wow-btn:hover .wow-btn-arrow-right {
+    opacity: 1;
+  }
+
+  /* ---- Gold variant: gradient text on dark surface ---- */
+  .wow-btn-gold {
+    background: rgba(24, 20, 18, 0.95);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    border: 1px solid rgba(241, 194, 45, 0.3);
+  }
+
+  .wow-btn-gold > span {
+    background: linear-gradient(270deg, #F1C22D 0%, #FF7757 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .wow-btn-gold:hover {
+    border-color: rgba(241, 194, 45, 0.6);
+    box-shadow: 0 0 15px rgba(248, 157, 65, 0.2);
+  }
+
+  /* ---- Green variant: green gradient text on dark surface ---- */
+  .wow-btn-green {
+    background: rgba(24, 20, 18, 0.95);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    border: 1px solid rgba(140, 190, 75, 0.3);
+  }
+
+  .wow-btn-green > span {
+    background: linear-gradient(270deg, #8cbe4b 0%, #c4cb63 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .wow-btn-green:hover {
+    border-color: rgba(140, 190, 75, 0.6);
+    box-shadow: 0 0 15px rgba(140, 190, 75, 0.2);
+  }
+</style>

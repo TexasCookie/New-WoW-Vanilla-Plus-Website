@@ -1,0 +1,66 @@
+---
+import HomeLayout from '../layouts/HomeLayout.astro';
+import HeroSection from '../components/hero/HeroSection.astro';
+import HeroCTA from '../components/hero/HeroCTA.astro';
+import FeaturesGrid from '../components/home/FeaturesGrid.astro';
+import NewsSection from '../components/home/NewsSection.astro';
+import DownloadSection from '../components/home/DownloadSection.astro';
+import CommunitySection from '../components/home/CommunitySection.astro';
+import { getCollection } from 'astro:content';
+
+const newsEntries = (await getCollection('news', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 4);
+
+const allNews = newsEntries.map((entry) => ({
+  title: entry.data.title,
+  description: entry.data.description,
+  date: entry.data.pubDate,
+  slug: entry.id,
+}));
+
+const features = [
+  {
+    title: 'Rebalanced Classes',
+    description: 'All 9 classes carefully tuned so every spec is viable in PvE and PvP.',
+    href: '/features/class-changes',
+  },
+  {
+    title: 'New Content',
+    description: 'New bosses, quests, and items that respect the Vanilla philosophy.',
+    href: '/features',
+  },
+  {
+    title: 'Classic Experience',
+    description: 'The authentic Vanilla WoW feel you remember, enhanced not replaced.',
+    href: '/features',
+  },
+  {
+    title: 'Active Community',
+    description: 'Community-driven development with transparent bug tracking and open discussion.',
+    href: '#',
+  },
+  {
+    title: 'Custom Events',
+    description: 'Regular server-wide events, tournaments, and seasonal celebrations.',
+    href: '#',
+  },
+  {
+    title: 'Bug Tracker',
+    description: 'Public GitHub issue tracker so you can report bugs and follow their progress.',
+    href: 'https://github.com/VanillaPlusTeam/bug-tracker',
+  },
+];
+---
+
+<HomeLayout title="VanillaPlus — Classic WoW Reimagined">
+  <HeroSection
+    title="Welcome to VanillaPlus"
+    subtitle="Classic WoW with new challenges, rebalanced classes, and fresh content — driven by the community."
+  />
+  <HeroCTA />
+  <FeaturesGrid features={features} />
+  <NewsSection posts={allNews} />
+  <DownloadSection />
+  <CommunitySection />
+</HomeLayout>

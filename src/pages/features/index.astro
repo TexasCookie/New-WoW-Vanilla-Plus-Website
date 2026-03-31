@@ -1,0 +1,30 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { getCollection } from 'astro:content';
+import Card from '../../components/common/Card.astro';
+import Badge from '../../components/common/Badge.astro';
+
+const allFeatures = (await getCollection('features', ({ data }) => !data.draft))
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+
+<ContentLayout title="Features — VanillaPlus" description="Explore the custom features that make VanillaPlus unique.">
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-heading font-bold text-[#c8c0b8] mb-2">Features</h1>
+    <p class="text-lg text-[#7a7168] mb-12">Explore what makes VanillaPlus a fresh take on Classic WoW.</p>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {allFeatures.map((feature) => (
+        <Card href={`/features/${feature.id}`}>
+          <div class="p-6">
+            <div class="mb-3">
+              <Badge>{feature.data.category}</Badge>
+            </div>
+            <h2 class="text-xl font-heading font-semibold text-[#c8c0b8] mb-2">{feature.data.title}</h2>
+            <p class="text-[#9c938b] leading-relaxed">{feature.data.description}</p>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </section>
+</ContentLayout>

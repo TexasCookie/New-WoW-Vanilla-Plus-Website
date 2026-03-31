@@ -1,0 +1,18 @@
+---
+interface Props {
+  url: string;
+  title?: string;
+}
+
+const { url, title = 'Video' } = Astro.props;
+---
+
+<div class="aspect-video w-full rounded overflow-hidden border border-wow-border">
+  <iframe
+    src={url}
+    title={title}
+    allowfullscreen
+    class="w-full h-full"
+    loading="lazy"
+  ></iframe>
+</div>

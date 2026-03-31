@@ -1,0 +1,45 @@
+---
+import Divider from './Divider.astro';
+---
+
+<footer class="bg-[#0a0908]">
+  <Divider />
+  <div class="max-w-[1440px] mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Column 1: Branding -->
+      <div>
+        <span class="gradient-text font-heading text-xl font-bold tracking-wider">VANILLA+</span>
+        <p class="mt-4 text-wow-faint text-sm leading-relaxed">
+          A blizzlike 1.12.1 World of Warcraft private server with custom PvP enhancements, quality-of-life improvements, and a thriving community.
+        </p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h4 class="gradient-text font-heading uppercase text-sm tracking-wider mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="/rules" class="text-wow-muted hover:text-wow-accent transition-colors text-sm">Rules</a></li>
+          <li><a href="/rewards" class="text-wow-muted hover:text-wow-accent transition-colors text-sm">Rewards</a></li>
+          <li><a href="/class-changes" class="text-wow-muted hover:text-wow-accent transition-colors text-sm">Class Changes</a></li>
+          <li><a href="/getting-started" class="text-wow-muted hover:text-wow-accent transition-colors text-sm">Getting Started</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Community -->
+      <div>
+        <h4 class="gradient-text font-heading uppercase text-sm tracking-wider mb-4">Community</h4>
+        <ul class="space-y-2">
+          <li><a href="https://vanilla-plus.wiki" target="_blank" rel="noopener noreferrer" class="text-wow-muted hover:text-wow-accent transition-colors text-sm">Wiki</a></li>
+          <li><a href="#" class="text-wow-muted hover:text-wow-accent transition-colors text-sm">Discord</a></li>
+          <li><a href="https://github.com/VanillaPlusTeam/bug-tracker" target="_blank" rel="noopener noreferrer" class="text-wow-muted hover:text-wow-accent transition-colors text-sm">Bug Tracker</a></li>
+          <li><a href="https://www.patreon.com/VanillaPlus" target="_blank" rel="noopener noreferrer" class="text-wow-muted hover:text-wow-accent transition-colors text-sm">Patreon</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="border-t border-wow-border mt-8 pt-6 text-center text-wow-faint text-sm col-span-3">
+      vanillaplus.org &copy; 2026 | Vanilla+ PvP Server
+    </div>
+  </div>
+</footer>

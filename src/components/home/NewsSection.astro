@@ -1,0 +1,86 @@
+---
+interface NewsPost {
+  title: string;
+  description: string;
+  date: Date;
+  slug: string;
+}
+
+interface Props {
+  posts: NewsPost[];
+}
+
+const { posts } = Astro.props;
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+---
+
+<section class="py-16 bg-wow-surface">
+  <div class="max-w-[1440px] mx-auto px-4">
+    <h2 class="gradient-text text-3xl uppercase mb-8">Latest News</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
+      <!-- News Articles -->
+      <div class="space-y-6">
+        {posts.map((post) => (
+          <a
+            href={`/news/${post.slug}`}
+            class="card-dark p-6 block transition-all duration-300 hover:border-wow-gold/20 hover:shadow-[0_0_20px_rgba(241,194,45,0.06)]"
+          >
+            <time class="text-wow-faint text-sm block mb-2">
+              {formatDate(post.date)}
+            </time>
+            <h3 class="text-white uppercase hover:text-wow-accent transition-colors mb-2">
+              {post.title}
+            </h3>
+            <p class="text-wow-muted text-sm leading-relaxed line-clamp-2">
+              {post.description}
+            </p>
+          </a>
+        ))}
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-6">
+        <!-- Discord Widget Placeholder -->
+        <div class="card-dark p-6 text-center">
+          <div class="text-4xl mb-3">&#128172;</div>
+          <h3 class="text-white uppercase text-sm mb-2">Join us on Discord</h3>
+          <p class="text-wow-muted text-sm mb-4">Chat with the community in real-time.</p>
+          <a
+            href="https://discord.gg/e34ugkqnWG"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-6 py-2 text-sm uppercase tracking-wider border border-wow-border card-dark hover:border-wow-gold/40 transition-colors"
+          >
+            <span class="gradient-text font-heading">Open Discord</span>
+          </a>
+        </div>
+
+        <!-- Join Community Card -->
+        <div class="card-dark p-6 text-center">
+          <div class="text-4xl mb-3">&#9876;</div>
+          <h3 class="text-white uppercase text-sm mb-2">Join the Community</h3>
+          <p class="text-wow-muted text-sm">
+            Stay up to date with the latest events, updates, and guild recruitment.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a
+        href="/news"
+        class="gradient-text font-heading uppercase tracking-wider text-sm hover:text-shadow-glow transition-all duration-300"
+      >
+        View All News &rarr;
+      </a>
+    </div>
+  </div>
+</section>

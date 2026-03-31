@@ -1,0 +1,38 @@
+---
+interface Props {
+  primaryText?: string;
+  primaryHref?: string;
+  secondaryText?: string;
+  secondaryHref?: string;
+}
+
+const {
+  primaryText = 'Play Now',
+  primaryHref = '#',
+  secondaryText = 'Get Launcher',
+  secondaryHref = '/uploads/VanillaPlusLauncher.zip',
+} = Astro.props;
+---
+
+<div class="flex flex-row flex-wrap gap-4 mt-8">
+  <a
+    href={primaryHref}
+    class="inline-flex items-center justify-center px-8 py-4 uppercase tracking-wider border border-wow-border card-dark hover:border-wow-gold/40 transition-colors duration-300 group"
+  >
+    <span class="gradient-text font-heading font-bold text-lg group-hover:text-shadow-glow">
+      {primaryText}
+    </span>
+  </a>
+
+  <a
+    href={secondaryHref}
+    class="inline-flex items-center justify-center px-8 py-4 uppercase tracking-wider border border-wow-border card-dark hover:border-wow-success/40 transition-colors duration-300 group"
+  >
+    <span
+      class="font-heading font-bold text-lg"
+      style="background: linear-gradient(270deg, #8cbe4b, #c4cb63); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+    >
+      {secondaryText}
+    </span>
+  </a>
+</div>

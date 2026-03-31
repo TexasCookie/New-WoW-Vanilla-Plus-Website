@@ -1,0 +1,103 @@
+/* ==========================================================================
+   VanillaPlus — Global Design System
+   Dark fantasy WoW-inspired theme with Tailwind CSS v4
+   ========================================================================== */
+
+@import "tailwindcss";
+
+/* --------------------------------------------------------------------------
+   Design Tokens — Tailwind v4 @theme block
+   -------------------------------------------------------------------------- */
+@theme {
+  /* Color Palette */
+  --color-wow-bg: #100d0c;
+  --color-wow-surface: rgba(24, 20, 18, 0.95);
+  --color-wow-surface-50: rgba(24, 20, 18, 0.5);
+  --color-wow-accent: #f89d41;
+  --color-wow-gold: #f1c22d;
+  --color-wow-gold-end: #ff7757;
+  --color-wow-success: #8cbe4b;
+  --color-wow-success-light: #c4cb63;
+  --color-wow-brown: #764502;
+  --color-wow-text: #9c938b;
+  --color-wow-muted: #929391;
+  --color-wow-faint: #5e5b55;
+  --color-wow-border: rgba(158, 151, 131, 0.1);
+  --color-wow-input: #0c0c0c;
+  --color-wow-dark-white: #9c938b;
+
+  /* Typography */
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-nav: 'Cinzel Decorative', serif;
+}
+
+/* --------------------------------------------------------------------------
+   Base Element Styles
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-wow-bg);
+  color: var(--color-wow-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  color: white;
+}
+
+a {
+  color: var(--color-wow-muted);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-wow-accent);
+}
+
+/* Gold gradient underline on h2 headings */
+h2::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-wow-gold), transparent);
+  margin: 0.75rem auto 0;
+}
+
+/* --------------------------------------------------------------------------
+   Custom Utility Classes
+   -------------------------------------------------------------------------- */
+
+/* Gradient text — Gold to ember sweep */
+.gradient-text {
+  background: linear-gradient(270deg, #F1C22D, #FF7757);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Dark card surface */
+.card-dark {
+  background-color: var(--color-wow-surface);
+  border: 1px solid var(--color-wow-border);
+  border-radius: 0;
+}
+
+/* Gold text glow */
+.text-shadow-glow {
+  text-shadow: 0 0 10px rgba(241, 194, 45, 0.4),
+               0 0 20px rgba(241, 194, 45, 0.2),
+               0 0 40px rgba(241, 194, 45, 0.1);
+}

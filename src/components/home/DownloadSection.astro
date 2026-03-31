@@ -1,0 +1,51 @@
+---
+const downloads = [
+  {
+    label: 'VanillaPlus Launcher',
+    href: '/uploads/VanillaPlusLauncher.zip',
+    description: 'Recommended — auto-updates and patches.',
+  },
+  {
+    label: 'Patch-3.MPQ',
+    href: '/uploads/patch-3.MPQ',
+    description: 'Manual patch file for existing clients.',
+  },
+  {
+    label: 'Full Client (Direct)',
+    href: '/uploads/WoW_VPlus_Client.zip',
+    description: 'Complete client — direct download.',
+  },
+  {
+    label: 'Full Client (Torrent)',
+    href: '/uploads/World of Warcraft Vanilla+.zip.torrent',
+    description: 'Complete client — BitTorrent download.',
+  },
+];
+---
+
+<section class="py-16">
+  <div class="max-w-[1440px] mx-auto px-4">
+    <h2 class="gradient-text text-3xl uppercase mb-8">Download</h2>
+
+    <!-- Realmlist Info Box -->
+    <div class="bg-wow-input border border-wow-border p-4 mb-8">
+      <p class="text-wow-faint text-sm mb-1">Realmlist</p>
+      <code class="text-wow-gold text-lg font-mono">set realmlist logon.vanillaplus.org</code>
+    </div>
+
+    <!-- Download Buttons -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {downloads.map((dl) => (
+        <a
+          href={dl.href}
+          class="card-dark p-6 flex flex-col justify-center items-center text-center transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(241,194,45,0.12)] hover:border-wow-gold/30 group"
+        >
+          <span class="gradient-text font-heading uppercase tracking-wider text-lg mb-2 group-hover:text-shadow-glow">
+            {dl.label}
+          </span>
+          <span class="text-wow-muted text-sm">{dl.description}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

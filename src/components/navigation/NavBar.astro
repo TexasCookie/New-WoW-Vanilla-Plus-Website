@@ -1,0 +1,61 @@
+---
+/* ==========================================================================
+   VanillaPlus — NavBar Component
+   CSS Grid split navigation (turtlecraft.gg pattern)
+   LEFT: dropdown items | CENTER: logo | RIGHT: direct links + login
+   ========================================================================== */
+
+import { mainNavItems } from '@utils/navigation';
+import DropdownMenu from './DropdownMenu.astro';
+
+const leftItems = mainNavItems.filter((item) => item.items && item.items.length > 0);
+const rightItems = mainNavItems.filter((item) => !item.items || item.items.length === 0);
+---
+
+<nav class="hidden lg:block">
+  <div class="grid items-center py-3 px-6" style="grid-template-columns: 1fr auto 1fr;">
+    <!-- LEFT: Items with dropdowns (Features, Community) -->
+    <div class="flex items-center gap-8">
+      {leftItems.map((item) => (
+        <DropdownMenu
+          label={item.label}
+          href={item.href}
+          items={item.items}
+        />
+      ))}
+    </div>
+
+    <!-- CENTER: Logo -->
+    <div class="flex justify-center">
+      <a href="/" class="font-heading text-xl font-bold gradient-text tracking-widest select-none whitespace-nowrap">
+        VANILLA+
+      </a>
+    </div>
+
+    <!-- RIGHT: Direct links + Login button -->
+    <div class="flex items-center justify-end gap-8">
+      {rightItems.map((item) => (
+        <DropdownMenu
+          label={item.label}
+          href={item.href}
+        />
+      ))}
+      <a
+        href="/account/login"
+        class="ml-4 px-5 py-1.5 border border-wow-border text-wow-accent uppercase text-sm tracking-wider font-heading hover:bg-wow-accent hover:text-wow-bg transition-colors duration-200"
+      >
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Hover-show logic for dropdown menus */
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+</style>

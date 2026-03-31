@@ -1,0 +1,36 @@
+---
+/* ==========================================================================
+   VanillaPlus — Header Component
+   Sticky top header with decorative gold gradient border
+   Contains NavBar (desktop) and MobileMenu (mobile)
+   ========================================================================== */
+
+import NavBar from './NavBar.astro';
+import MobileMenu from './MobileMenu.astro';
+---
+
+<header class="header-sticky sticky top-0 z-50" style="background: rgba(24,20,18,0.95); backdrop-filter: blur(4px);">
+  <div class="max-w-[1440px] mx-auto flex items-center justify-between px-4">
+    <!-- Desktop Navigation (hidden below lg) -->
+    <div class="hidden lg:flex lg:w-full">
+      <NavBar />
+    </div>
+
+    <!-- Mobile: Logo left, Hamburger right (hidden on lg+) -->
+    <div class="flex items-center justify-between w-full lg:hidden">
+      <a href="/" class="font-heading text-lg font-bold gradient-text tracking-widest py-3">
+        VANILLA+
+      </a>
+      <MobileMenu />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header-sticky::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-wow-gold), transparent);
+  }
+</style>

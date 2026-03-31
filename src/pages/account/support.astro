@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allRewards = await getCollection('rewards');
+---
+
+<BaseLayout title="Support VanillaPlus — VanillaPlus" description="Help keep VanillaPlus running and growing.">
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-heading font-bold text-[#c8c0b8] mb-4">Support the Project</h1>
+      <p class="text-lg text-[#9c938b] max-w-2xl mx-auto leading-relaxed">
+        VanillaPlus is powered by its community. Your support helps us cover server costs, develop new content,
+        and keep the project running smoothly. Every contribution matters — thank you for being part of this.
+      </p>
+    </div>
+
+    <div class="text-center mb-12">
+      <a
+        href="https://www.patreon.com/VanillaPlus"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-8 py-3 bg-[#d4a847] text-[#100d0c] font-semibold rounded-lg text-lg hover:bg-[#e0b84f] transition-colors"
+      >
+        Support on Patreon
+      </a>
+    </div>
+
+    {allRewards.length > 0 && (
+      <div class="mt-12">
+        <h2 class="text-2xl font-heading font-semibold text-[#c8c0b8] mb-6 text-center">Reward Tiers</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          {allRewards.map((reward) => (
+            <div class="border border-[#2a2420] rounded-lg bg-[#1a1614] p-5">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs uppercase tracking-wider text-[#d4a847] font-semibold">{reward.data.tier}</span>
+                <span class="text-sm text-[#7a7168]">{reward.data.amount}</span>
+              </div>
+              <h3 class="text-lg font-heading font-semibold text-[#c8c0b8]">{reward.data.title}</h3>
+              <p class="text-sm text-[#9c938b] mt-1">{reward.data.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </section>
+</BaseLayout>

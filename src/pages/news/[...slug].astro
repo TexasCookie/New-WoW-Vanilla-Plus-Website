@@ -1,0 +1,33 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import ContentHeader from '../../components/content/ContentHeader.astro';
+import MarkdownRenderer from '../../components/content/MarkdownRenderer.astro';
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('news', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<ContentLayout title={`${post.data.title} — VanillaPlus`} description={post.data.description}>
+  <article class="max-w-4xl mx-auto px-4 py-16">
+    <ContentHeader
+      title={post.data.title}
+      description={post.data.description}
+      date={post.data.pubDate}
+      category={post.data.category}
+      author={post.data.author}
+    />
+    <MarkdownRenderer>
+      <Content />
+    </MarkdownRenderer>
+  </article>
+</ContentLayout>

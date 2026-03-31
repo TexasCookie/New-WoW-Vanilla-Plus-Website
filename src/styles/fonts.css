@@ -1,0 +1,86 @@
+/* ==========================================================================
+   VanillaPlus — Font Definitions
+   Dark fantasy typography: Cinzel (headings), Cinzel Decorative (nav), Inter (body)
+   ========================================================================== */
+
+/* Google Fonts CDN imports */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+/* --------------------------------------------------------------------------
+   Cinzel — Classical Roman inscriptional letterforms for headings
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Cinzel'),
+       local('Cinzel-Regular'),
+       url('https://fonts.gstatic.com/s/cinzel/v25/8vIJ7ww63mVu7gtL8W76HEdW7q4.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Cinzel Bold'),
+       local('Cinzel-Bold'),
+       url('https://fonts.gstatic.com/s/cinzel/v25/8vIK7ww63mVu7gtL8W76HEdWD7xofQ.woff2') format('woff2');
+}
+
+/* --------------------------------------------------------------------------
+   Cinzel Decorative — Ornate variant for navigation & premium labels
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Cinzel Decorative';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Cinzel Decorative'),
+       local('CinzelDecorative-Regular'),
+       url('https://fonts.gstatic.com/s/cinzeldecorative/v18/daaHSScvJGqLYhG8nNt8KPPswUAPniZoF2AL5s8.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cinzel Decorative';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Cinzel Decorative Bold'),
+       local('CinzelDecorative-Bold'),
+       url('https://fonts.gstatic.com/s/cinzeldecorative/v18/daaHSScvJGqLYhG8nNt8KPPswUAPniZgF2AL5s8.woff2') format('woff2');
+}
+
+/* --------------------------------------------------------------------------
+   Inter — Clean geometric sans-serif for body text & UI
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Inter'),
+       local('Inter-Regular'),
+       url('https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiA.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Inter Medium'),
+       local('Inter-Medium'),
+       url('https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fAZ9hiA.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Inter SemiBold'),
+       local('Inter-SemiBold'),
+       url('https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZ9hiA.woff2') format('woff2');
+}

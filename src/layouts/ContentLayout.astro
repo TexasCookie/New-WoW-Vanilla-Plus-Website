@@ -1,0 +1,32 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  pubDate?: Date;
+}
+
+const { title, description, pubDate } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-[1440px] mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8">
+      <!-- Article Content -->
+      <article>
+        <slot />
+      </article>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="card-dark p-6">
+          <h3 class="text-sm uppercase tracking-wider text-wow-faint mb-4">On This Page</h3>
+          <nav class="space-y-2">
+            <p class="text-wow-muted text-sm">Navigation will be populated automatically.</p>
+          </nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

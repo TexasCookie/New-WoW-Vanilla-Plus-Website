@@ -1,0 +1,33 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import MarkdownRenderer from '../components/content/MarkdownRenderer.astro';
+import { getCollection, render } from 'astro:content';
+
+const allRules = (await getCollection('rules'))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const renderedRules = await Promise.all(
+  allRules.map(async (rule) => {
+    const { Content } = await render(rule);
+    return { ...rule, Content };
+  })
+);
+---
+
+<ContentLayout title="Server Rules — VanillaPlus" description="General rules and guidelines for the VanillaPlus community.">
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-heading font-bold text-[#c8c0b8] mb-2">Server Rules</h1>
+    <p class="text-lg text-[#7a7168] mb-12">Please read and follow these rules to keep VanillaPlus a great place for everyone.</p>
+
+    <div class="space-y-12">
+      {renderedRules.map((rule) => (
+        <article>
+          <h2 class="text-2xl font-heading font-semibold text-[#c8c0b8] mb-4">{rule.data.title}</h2>
+          <MarkdownRenderer>
+            <rule.Content />
+          </MarkdownRenderer>
+        </article>
+      ))}
+    </div>
+  </section>
+</ContentLayout>
